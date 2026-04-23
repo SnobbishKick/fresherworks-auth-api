@@ -49,9 +49,9 @@ const loginUser = async (req, res) => {
     }
 
     // Generate JWT
-    const token = jwt.sign({ id: user._id, role: user.role }, "secretkey", {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" });
 
     // Send Response
     return res.status(200).json({
@@ -63,6 +63,7 @@ const loginUser = async (req, res) => {
       role: user.role,
     });
   } catch (error) {
+    console.error(error)
     res.status(500).json({ message: "Server Error" });
   }
 };
