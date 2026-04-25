@@ -22,6 +22,7 @@ app.get("/", (req,res) => {
 });
 
 //Port
+console.log("MONGO_URI:",process.env.MONGO_URI ? "Loaded" : "Missing")
 const PORT = process.env.PORT || 5000;
 
 //Start server AFTER DB connection
