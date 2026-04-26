@@ -1,12 +1,12 @@
 const express = require("express");
-const protect = require("../middleware/authMiddleware");
-
 const router = express.Router();
+const protect = require("../middleware/authMiddleware");
 
 //Protected route
 router.get("/profile", protect, (req, res) => {
    res.json({
-      message: "User Profile",
+      success: true,
+      message: "Access granted to Protected route",
       user: req.user,
    });
 });
